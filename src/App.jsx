@@ -7,9 +7,9 @@ function App() {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem("transactions");
-    if (saved) {
-      setTransactions(JSON.parse(saved));
+    const savedTransactions = localStorage.getItem("transactions");
+    if (savedTransactions) {
+      setTransactions(JSON.parse(savedTransactions));
     }
   }, []);
 
@@ -18,7 +18,10 @@ function App() {
   }, [transactions]);
 
   const addTransaction = () => {
-    if (!text || !amount) return;
+    if (text === "" || amount === "") {
+      alert("Please enter all fields");
+      return;
+    }
 
     const newTransaction = {
       id: Date.now(),
@@ -32,7 +35,9 @@ function App() {
   };
 
   const deleteTransaction = (id) => {
-    setTransactions(transactions.filter((item) => item.id !== id));
+    setTransactions(
+      transactions.filter((transaction) => transaction.id !== id)
+    );
   };
 
   const income = transactions
@@ -50,17 +55,17 @@ function App() {
       <h1>💰 Smart Expense Tracker</h1>
 
       <div className="summary">
-        <div>
+        <div className="card">
           <h3>Balance</h3>
           <p>₹{balance}</p>
         </div>
 
-        <div>
+        <div className="card">
           <h3>Income</h3>
           <p className="income">₹{income}</p>
         </div>
 
-        <div>
+        <div className="card">
           <h3>Expense</h3>
           <p className="expense">₹{Math.abs(expense)}</p>
         </div>
@@ -69,14 +74,14 @@ function App() {
       <div className="form">
         <input
           type="text"
-          placeholder="Description"
+          placeholder="Enter Description"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
 
         <input
           type="number"
-          placeholder="Amount (+Income / -Expense)"
+          placeholder="Enter Amount (+Income / -Expense)"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />

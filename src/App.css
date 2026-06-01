@@ -10,12 +10,9 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 40px auto;
-  background: white;
   padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 h1 {
@@ -25,17 +22,17 @@ h1 {
 
 .summary {
   display: flex;
-  justify-content: space-between;
   gap: 15px;
   margin-bottom: 25px;
 }
 
-.summary div {
+.card {
   flex: 1;
-  background: #eef2ff;
-  padding: 15px;
-  border-radius: 10px;
+  background: white;
+  padding: 20px;
   text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .income {
@@ -57,15 +54,15 @@ h1 {
 
 input {
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 8px;
 }
 
 button {
   padding: 12px;
-  border: none;
   background: #4f46e5;
   color: white;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -79,20 +76,24 @@ ul {
 }
 
 li {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f8fafc;
-  padding: 12px;
-  margin-bottom: 10px;
-  border-radius: 8px;
 }
 
 .delete-btn {
   background: crimson;
 }
 
-@media (max-width: 600px) {
+h2 {
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
   .summary {
     flex-direction: column;
   }
